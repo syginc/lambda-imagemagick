@@ -1,0 +1,28 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Transform: 'AWS::Serverless-2016-10-31'
+
+Resources:
+  LayerVersion:
+    Type: 'AWS::Serverless::LayerVersion'
+    Properties:
+      LayerName: ImageMagickLayer
+      ContentUri: dist/imagemagick-layer.zip
+      Description: ImageMagickLayer
+      CompatibleRuntimes:
+        - nodejs12.x
+      LicenseInfo: https://imagemagick.org/script/license.php
+
+  LayerVersionPermission:
+    Type: 'AWS::Lambda::LayerVersionPermission'
+    DeletionPolicy: Retain
+    Properties:
+      Action: lambda:GetLayerVersion
+      LayerVersionArn: !Ref LayerVersion
+      Principal: '*'
+
+Outputs:
+  LayerVersionArn:
+    Value: !Ref LayerVersion
+    Export:
+      Name: !Sub '${AWS::StackName}-LayerVersionArn'
