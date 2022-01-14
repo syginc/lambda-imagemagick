@@ -1,0 +1,21 @@
+name: Create and publish a Docker image
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: '0 0 7 * *'
+  workflow_dispatch:
+
+jobs:
+  publish-to-ghcr:
+    uses: syginc/actions-util/.github/workflows/ghcr-publish.yml@master
+    with:
+      image_name: ${{ github.repository_owner }}/lambda-imagemagick
+      tag: latest
+      file_path: Dockerfile
+      context_path: .
+    secrets:
+      registry_username: ${{github.actor}}
+      registry_password: ${{secrets.GITHUB_TOKEN}}
