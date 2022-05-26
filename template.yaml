@@ -10,7 +10,7 @@ Resources:
       ContentUri: dist/imagemagick-layer.zip
       Description: ImageMagickLayer
       CompatibleRuntimes:
-        - nodejs12.x
+        - nodejs16.x
       LicenseInfo: https://imagemagick.org/script/license.php
 
   LayerVersionPermission:
