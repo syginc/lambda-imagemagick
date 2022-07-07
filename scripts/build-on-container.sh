@@ -6,6 +6,7 @@ mkdir -p /opt
 
 LIBJPEG_TURBO_VERSION=2.0.4
 LIBPNG_VERSION=1.6.37
+LIBWEBP_VERSION=1.2.2
 MAGICK_VERSION=6.9.10-91
 
 rm -rf build
@@ -36,6 +37,14 @@ cd ..
 curl -s -O https://jaist.dl.sourceforge.net/project/libpng/libpng16/$LIBPNG_VERSION/libpng-$LIBPNG_VERSION.tar.xz
 tar xf libpng-$LIBPNG_VERSION.tar.xz
 cd libpng-$LIBPNG_VERSION
+./configure --prefix=/opt
+make
+make install
+cd ..
+
+curl -s -O https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-$LIBWEBP_VERSION.tar.gz
+tar xf libwebp-$LIBWEBP_VERSION.tar.gz
+cd libwebp-$LIBWEBP_VERSION
 ./configure --prefix=/opt
 make
 make install
@@ -72,7 +81,8 @@ cd ImageMagick-$MAGICK_VERSION
   --disable-openmp \
   --disable-dependency-tracking \
   --with-png \
-  --with-jpeg
+  --with-jpeg \
+  --with-webp
 make
 make install
 cd ..
