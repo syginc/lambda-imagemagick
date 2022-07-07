@@ -75,7 +75,6 @@ cd ImageMagick-$MAGICK_VERSION
   --without-pango \
   --without-raw \
   --without-tiff \
-  --without-webp \
   --without-xml \
   --disable-opencl \
   --disable-openmp \
