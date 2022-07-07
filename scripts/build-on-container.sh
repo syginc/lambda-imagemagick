@@ -41,7 +41,7 @@ make
 make install
 cd ..
 
-curl -s -O https://download.imagemagick.org/ImageMagick/download/releases/ImageMagick-$MAGICK_VERSION.tar.xz
+curl -s -O https://imagemagick.org/archive/releases/ImageMagick-$MAGICK_VERSION.tar.xz
 tar xf ImageMagick-$MAGICK_VERSION.tar.xz
 cd ImageMagick-$MAGICK_VERSION
 ./configure \
