@@ -6,6 +6,7 @@ mkdir -p /opt
 
 LIBJPEG_TURBO_VERSION=2.0.4
 LIBPNG_VERSION=1.6.37
+LIBWEBP_VERSION=1.2.2
 MAGICK_VERSION=6.9.10-91
 
 rm -rf build
@@ -41,6 +42,14 @@ make
 make install
 cd ..
 
+curl -s -O https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-$LIBWEBP_VERSION.tar.gz
+tar xf libwebp-$LIBWEBP_VERSION.tar.gz
+cd libwebp-$LIBWEBP_VERSION
+./configure --prefix=/opt
+make
+make install
+cd ..
+
 curl -s -O https://imagemagick.org/archive/releases/ImageMagick-$MAGICK_VERSION.tar.xz
 tar xf ImageMagick-$MAGICK_VERSION.tar.xz
 cd ImageMagick-$MAGICK_VERSION
@@ -66,13 +75,13 @@ cd ImageMagick-$MAGICK_VERSION
   --without-pango \
   --without-raw \
   --without-tiff \
-  --without-webp \
   --without-xml \
   --disable-opencl \
   --disable-openmp \
   --disable-dependency-tracking \
   --with-png \
-  --with-jpeg
+  --with-jpeg \
+  --with-webp
 make
 make install
 cd ..
