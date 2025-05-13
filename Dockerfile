@@ -1,4 +1,4 @@
-FROM ghcr.io/syginc/lambda-builder:node16
+FROM ghcr.io/syginc/lambda-builder:node20
 RUN mkdir /work
 WORKDIR /work
 COPY scripts/build-on-container.sh /work/build-on-container.sh
